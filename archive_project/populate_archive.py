@@ -7,7 +7,18 @@ django.setup()
 from archive.models import Client, Project, Student
 
 def populate():
-    #TODOread from file and call functions to create the objects
+    #TODO
+
+    #Load text file(s)
+
+    #Read one line from file
+
+    #If it doesnt start with a tab:
+    #    Explode string(regex?)
+    #    Create client 'client'
+    #    Create project 'project' using 'client' and exploded data
+    #elif
+    #    Create student with 'project' reference
     pass
 
 def add_client(organization, person, contact):
