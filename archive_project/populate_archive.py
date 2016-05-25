@@ -37,8 +37,9 @@ def populate(textfile):
 
 def add_client(organization, person, contact):
     c = Client.objects.get_or_create(organization = organization, person = person)[0]
-    print contact
+    #Set contact details here in case they update in a later project
     c.contact = contact
+    c.save()
     return c
 
 def add_project(year, groupName, client):
