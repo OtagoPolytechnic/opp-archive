@@ -1,0 +1,7 @@
+2010;First Group Ever;Lowest bidder ever;Joe Bloggs; j@nohope.com
+	Arron Dick
+	Bob Sagget
+	Micheal Flately
+2010;Send Group;;Andrew Hite;
+	Sarah Evans
+	Sally Evilz
