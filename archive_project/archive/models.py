@@ -18,7 +18,7 @@ class Project(models.Model):
     client = models.ForeignKey(Client)
 
     def __unicode__(self):
-        return self.name
+        return self.groupName
 
 class Student(models.Model):
     name = models.CharField(max_length = 128, unique = True, null = False)
