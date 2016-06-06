@@ -11,13 +11,9 @@ def search(request):
     found_projects = None
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
-        
-        #Search projects
-        entry_query = get_query(query_string, ['year', 'groupName',])
-        found_projects = Project.objects.filter(entry_query)
-        
-        #TODO Search Client
-        #TODO Search Student        
+
+        entry_query = get_query(query_string, ['year', 'groupName', 'student__name', 'client__organization', 'client__person',])
+        found_projects = Project.objects.filter(entry_query).distinct()
 
     return render(request, 'archive/search_results.html',
                          { 'query_string': query_string, 'found_projects': found_projects })
