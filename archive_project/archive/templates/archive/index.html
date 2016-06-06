@@ -1,0 +1,11 @@
+{% extends 'archive/base.html' %}
+
+{% block content %}
+<h1>Search for archived projects</h1>
+<p>
+<form method="GET" action = "{% url 'search' %}">
+    <label for="id_q">Search:</label>
+    <input type="text" name="q" id="id_q"/>
+    <input type="submit" value="Submit"/>
+</form>
+{% endblock %}
