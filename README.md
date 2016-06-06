@@ -4,6 +4,9 @@
 Python 2.7.10
 Django 1.9.6
 
-# Tutorials followed:
+# Tutorials followed/resources used:
 http://www.tangowithdjango.com/book17/
 (I realize this is for Django 1.7 not 1.9)
+
+http://julienphalip.com/post/2825034077/adding-search-to-a-django-site-in-a-snap
+Search code!
