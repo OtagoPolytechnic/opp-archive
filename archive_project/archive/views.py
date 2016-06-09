@@ -12,7 +12,7 @@ def search(request):
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
 
-        entry_query = get_query(query_string, ['year', 'groupName', 'student__name', 'client__organization', 'client__person',])
+        entry_query = get_query(query_string, ['year', 'groupName', 'students__name', 'client__organization', 'client__person',])
         found_projects = Project.objects.filter(entry_query).distinct()
 
     return render(request, 'archive/search_results.html',

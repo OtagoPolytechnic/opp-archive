@@ -1,14 +1,19 @@
 {% extends 'archive/base.html' %}
 
 {% block content %}
-<p>This is the search page</p>
+<h1>Search results</h1>
 You searched for {{ query_string }}<br/>
 
 The follow projects were found:<br/>
-
+<ul class="list-group">
 {% for project in found_projects %}
-    <p>{{ project.year }}<br/>
-       {{ project.groupName }}<br/>
-    </p>
+    <li class="list-group-item">
+       {{ project.year }} : {{ project.groupName }}, {{ project.client }}<br/>
+       <small>Students:</small>
+       {% for student in project.students.all %}
+        {{ student.name }}
+       {% endfor %}
+    </li>
 {% endfor %}
+</ul>
 {% endblock %}

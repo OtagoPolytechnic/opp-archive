@@ -2,10 +2,18 @@
 
 {% block content %}
 <h1>Search for archived projects</h1>
-<p>
-<form method="GET" action = "{% url 'search' %}">
-    <label for="id_q">Search:</label>
-    <input type="text" name="q" id="id_q"/>
-    <input type="submit" value="Submit"/>
+<p>Please use this form to search for archived projects<br/>
+All individual words will be searched for.<br/>
+To search for words together, enclose them in double quotes:<var> &quot;two words&quot;</var><br/>
+You may search by Project name, year, student name, client name and/or organisation</p>
+
+<div>
+<form class="form-inline" method="GET" action = "{% url 'search' %}">
+    <fieldset class="form-group">
+        <label for="id_q">Search:</label>
+        <input class="form-control" type="text" name="q" id="id_q" placeholder="Enter search text here"/>
+        <button type="submit" class="btn btn-primary" value="Submit">Search</button>
+</fieldset>
 </form>
+</div>
 {% endblock %}
