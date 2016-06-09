@@ -47,7 +47,8 @@ def add_project(year, groupName, client):
     return p
 
 def add_student(name, project):
-    s = Student.objects.get_or_create(name = name, project = project)[0]
+    s = Student.objects.get_or_create(name = name)[0]
+    project.students.add(s)
     return s
 
 # Start execution here!
