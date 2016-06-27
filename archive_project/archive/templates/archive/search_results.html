@@ -5,9 +5,11 @@
 You searched for {{ query_string }}<br/>
 
 The follow projects were found:<br/>
+<form method="POST" class="post-form">{% csrf_token %}
 <ul class="list-group">
 {% for project in found_projects %}
     <li class="list-group-item">
+    <input type="checkbox" name="project" value="{{project.pk}}"/>
        {{ project.year }} : {{ project.groupName }}, {{ project.client }}<br/>
        <small>Students:</small>
        {% for student in project.students.all %}
@@ -16,4 +18,6 @@ The follow projects were found:<br/>
     </li>
 {% endfor %}
 </ul>
+<input type="submit" value="Request project docs"/>
+</form>
 {% endblock %}
