@@ -10,3 +10,8 @@ http://www.tangowithdjango.com/book17/
 
 http://julienphalip.com/post/2825034077/adding-search-to-a-django-site-in-a-snap
 Search code!
+
+#Requirements
+pip install pything
+pip install django
+pip install django-bootstrap3
