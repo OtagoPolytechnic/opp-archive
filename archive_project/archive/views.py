@@ -17,3 +17,9 @@ def search(request):
 
     return render(request, 'archive/search_results.html',
                          { 'query_string': query_string, 'found_projects': found_projects })
+
+def request(request):
+    project_list = request.POST.getlist('project')
+    projects = Project.objects.filter(pk__in=project_list).distinct()
+       
+    return render(request, 'archive/request.html', {'projects':projects})
