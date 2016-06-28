@@ -5,7 +5,7 @@
 You searched for {{ query_string }}<br/>
 
 The follow projects were found:<br/>
-<form method="POST" class="post-form">{% csrf_token %}
+<form method="POST" class="post-form" action="{% url 'request' %}">{% csrf_token %}
 <ul class="list-group">
 {% for project in found_projects %}
     <li class="list-group-item">
