@@ -21,5 +21,6 @@ def search(request):
 def request(request):
     project_list = request.POST.getlist('project')
     projects = Project.objects.filter(pk__in=project_list).distinct()
-       
+    #Format and send off email
+    #output confirmation to user in new template
     return render(request, 'archive/request.html', {'projects':projects})
