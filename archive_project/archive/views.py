@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from .search import *
 from .models import Project
 from .forms import SearchForm, DetailsForm
+from django.core.mail import send_mail
 
 def index(request):
     form = SearchForm()
@@ -27,7 +28,7 @@ def details(request):
         #Get list of the selected projects        
         project_list = request.POST.getlist('project')
         selected_projects = Project.objects.filter(pk__in=project_list).distinct()
-        #TODO Check at least one project has been selected
+        #Check at least one project has been selected
         if selected_projects.count() == 0:
             #get query string
             query_string = request.POST['q']    
@@ -42,13 +43,31 @@ def details(request):
 def confirmation(request):
     if request.method == 'POST':
         #Get list of selected projects(this should always be at least one)
-        #TODO Check again?
-        selected_projects = request.POST.getlist('project')
+        project_list = request.POST.getlist('project')
+        selected_projects = Project.objects.filter(pk__in=project_list).distinct()
         
         form = DetailsForm(request.POST)
         if form.is_valid():
-            #TODO Get email address/user name etc
-            #TODO Format email and send off
+            data = form.cleaned_data
+            name         = data['name']
+            organisation = data['organisation']
+            email        = data['email']
+            #Format email and send off
+            subject = "Opp-archive request from "+name
+            #Add organisation name if avaliable
+            if (organisation!=''):
+                subject+=" at "+organisation
+            
+            #Created message
+            message = "The following project(s) have been requested:\n"
+            for project in selected_projects:
+                request_line = "* " + str(project.year) + " - " + project.groupName +"\n"
+                message += request_line
+            
+            #Send email
+            send_mail(subject, message, email, ['dickaj1@student.op.ac.nz'], fail_silently=False)
+            
+            
             return render(request, 'archive/confirmation.html', {'selected_projects': selected_projects, 'name': name, 'email': email})
         else:
             #name/email isn't valid, send back to previous page to get details
