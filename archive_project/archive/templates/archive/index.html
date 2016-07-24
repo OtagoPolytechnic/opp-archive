@@ -8,10 +8,9 @@ To search for words together, enclose them in double quotes:<var> &quot;two word
 You may search by Project name, year, student name, client name and/or organisation</p>
 
 <div>
-<form class="form-inline" method="GET" action = "{% url 'search' %}">
+<form class="form-inline" method="GET" action = "{% url 'results' %}">
     <fieldset class="form-group">
-        <label for="id_q">Search:</label>
-        <input class="form-control" type="text" name="q" id="id_q" placeholder="Enter search text here"/>
+        {{ form }}
         <button type="submit" class="btn btn-primary" value="Submit">Search</button>
 </fieldset>
 </form>

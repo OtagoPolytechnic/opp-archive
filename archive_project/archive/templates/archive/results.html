@@ -5,7 +5,9 @@
 You searched for {{ query_string }}<br/>
 {% if found_projects %}
     The follow projects were found:<br/>
-    <form method="POST" class="post-form" action="{% url 'request' %}">{% csrf_token %}
+    
+    <form method="POST" class="form-horizontal" role="form" action="{% url 'details' %}">{% csrf_token %}
+    <fieldset class="form-group">
     <ul class="list-group">
     {% for project in found_projects %}
         <li class="list-group-item">
@@ -18,7 +20,9 @@ You searched for {{ query_string }}<br/>
     </li>
     {% endfor %}
     </ul>
-    <input type="submit" value="Request project docs"/>
+    <input type="hidden" name="q" value="{{ query_string }}"/>
+    <input type="submit" class="btn btn-primary" value="Next"/>
+    </fieldset>
     </form>
 {% else %}
     No projects were found, please try another search
