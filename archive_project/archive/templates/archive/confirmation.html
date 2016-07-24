@@ -2,5 +2,13 @@
 
 {% block content %}
 <h1>Request confirmation</h1>
-Hi TODO name, the following TODO projects, will be sent to your address at TODO email
+Thank you {{ name }}, a request for the following projects:</br>
+{% for project in selected_projects %}
+        <ul>
+        <li class="list-group-item">
+            {{ project.year }} : {{ project.groupName }}, {{ project.client }}<br/>
+        </li>
+        </ul>
+{% endfor %}
+will be sent to your address at {{ email }} shortly.
 {% endblock %}

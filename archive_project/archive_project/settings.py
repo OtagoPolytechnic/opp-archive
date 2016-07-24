@@ -127,3 +127,12 @@ BOOTSTRAP3 = {
     # Include jQuery with Bootstrap JavaScript (affects django-bootstrap3 template tags)
     'include_jquery': True,
 }
+
+#Used to email off the requests
+#TODO Change this in production!!
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'opp-archive'
+EMAIL_HOST_PASSWORD = 'apples22a'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+

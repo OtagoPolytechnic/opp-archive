@@ -3,10 +3,16 @@
 {% block content %}
 <h1>Request details</h1>
 Please enter your name and email address to be sent the following projects:<br/>
-TODO Write a list of the selected projects here
-TODO Place the projects selected into a hidden field!
-
 <form method="POST" class="form-horizontal" role="form" action="{% url 'confirmation' %}">{% csrf_token %}
-{{ form }}
+{% for project in selected_projects %}
+        <ul>
+        <li class="list-group-item">
+        <input type="hidden" name="project" value="{{project.pk}}"/>
+            {{ project.year }} : {{ project.groupName }}, {{ project.client }}<br/>
+        </li>
+        </ul>
+{% endfor %}
+
+{{ form.as_p }}
 <input type="submit" class="btn btn-primary" value="Request project(s)"/>
 {% endblock %}
