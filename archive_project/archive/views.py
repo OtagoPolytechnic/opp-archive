@@ -4,6 +4,7 @@ from .search import *
 from .models import Project
 from .forms import SearchForm, DetailsForm
 from django.core.mail import send_mail
+import os
 
 def index(request):
     form = SearchForm()
@@ -65,8 +66,19 @@ def confirmation(request):
                 message += request_line
             
             #Send email
-            send_mail(subject, message, email, ['dickaj1@student.op.ac.nz'], fail_silently=False)
+            #TODO Uncomment once SMTP server is set up
+            #TODO Deal with failure?
+            #send_mail(subject, message, email, ['dickaj1@student.op.ac.nz'], fail_silently=False)
             
+            #Log to file
+            my_dir = os.path.dirname(__file__)
+            log_file_path = os.path.join(my_dir, 'requestLog.txt')
+            
+            with open(log_file_path, 'a') as file_object:
+                file_object.write(subject+"\n")
+                file_object.write(message+"\n")
+                file_object.write(email+"\n")
+                file_object.write("-------------------------------------\n")
             
             return render(request, 'archive/confirmation.html', {'selected_projects': selected_projects, 'name': name, 'email': email})
         else:
