@@ -131,8 +131,7 @@ BOOTSTRAP3 = {
 #Used to email off the requests
 #TODO Change this in production!!
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'opp-archive'
-EMAIL_HOST_PASSWORD = 'apples22a'
+EMAIL_HOST_USER = '<REMOVED>'
+EMAIL_HOST_PASSWORD = '<REMOVED>'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
