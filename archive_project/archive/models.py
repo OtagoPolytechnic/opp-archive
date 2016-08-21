@@ -20,7 +20,7 @@ class Student(models.Model):
 
 class Project(models.Model):
     year = models.IntegerField()
-    groupName = models.CharField(max_length = 128, unique = True)
+    groupName = models.CharField(max_length = 128)
     client = models.ForeignKey(Client)
     students = models.ManyToManyField(Student)
 

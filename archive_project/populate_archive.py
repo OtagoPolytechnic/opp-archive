@@ -25,9 +25,13 @@ def populate(textfile):
                 client = add_client(details[2], details[3], details[4])
                 #Create Project
                 project = add_project(details[0], details[1], client)
+                print "---------------------------------------------"
+                print project
+                print "---------------"
             else:
                 #Create student
                 student = add_student(line[1:], project)
+                print student
 
     #Loop over contents of file
     #If it doesnt start with a tab:
