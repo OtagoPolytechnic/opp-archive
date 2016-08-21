@@ -15,11 +15,14 @@ def populate(textfile):
         for line in fh:
             #strip off new line character
             line=line.rstrip()
+            #Check and see if this is a comment line
+            if line.find('#')==0:
+                print line
             #Check to see if this as a project line
-            if line.find('\t') != 0:
+            elif line.find('\t') != 0:
                 details = line.split(';')
                 #Create Client
-		client = add_client(details[2], details[3], details[4])
+                client = add_client(details[2], details[3], details[4])
                 #Create Project
                 project = add_project(details[0], details[1], client)
             else:
@@ -62,4 +65,10 @@ if __name__ == '__main__':
     Student.objects.all().delete()
 
     print "Loading new data from text file"
-    populate('testdata.txt')
+    populate('2009 projects.txt')
+    populate('2010 projects.txt')
+    populate('2011 projects.txt')
+    populate('2012 projects.txt')
+    populate('2013 projects.txt')
+    populate('2014 projects.txt')
+    populate('2015 projects.txt')
