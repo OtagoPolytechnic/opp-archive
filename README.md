@@ -13,8 +13,9 @@ Search code!
 
 #Requirements
 
-pip install python
-
 pip install django
 
 pip install django-bootstrap3
+
+#Population
+Run population script with: python -tt populate_archive.py
